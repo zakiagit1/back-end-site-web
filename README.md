@@ -91,4 +91,4 @@ __Des entretiens au pifs qui seront programmés chaque fin de tache.
 
 **Courage !**
 
-** La folie, c’est de refaire la même chose et d’en attendre un résultat différent. Albert Einstein!** 
+**La folie, c’est de refaire la même chose et d’en attendre un résultat différent. Albert Einstein!** 
