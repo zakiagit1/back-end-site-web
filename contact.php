@@ -14,6 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <script src="https://kit.fontawesome.com/5e67adc73a.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
     <link href="css/business-casual.css" rel="stylesheet">
 
@@ -28,6 +29,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<link rel="stylesheet" href="css/email.css" type="text/css" media="all">
 
 </head>
 
@@ -37,40 +39,8 @@
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">The Perfect Cup</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="blog.html">Blog</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    <?php include 'navbar.php';?>
+    <?php include 'form.php';?>
 
     <div class="container">
 
@@ -112,32 +82,56 @@
                     </h2>
                     <hr>
                     <div id="add_err2"></div>
-                    <form role="form">
-                        <div class="row">
-                            <div class="form-group col-lg-4">
+              
+    <!-- /.container -->
+
+   
+   <form id="form" role="form" name="form" action="#" onsubmit="return check(this.element)"  method="POST">
+	<div>
+        <input name="create_email" type="text" id="create_email" size="45"/>
+        <input name="create_password" type="password" id="create_password"/>
+        <input name="create_confirm" type="password" id="create_confirm" />
+        <input name="create" type="submit" id="create" value="Créez votre compte"/>
+    </div>
+         
+                        <!-- <div class="row"> -->
+                            <div class="form-group col-lg-6">
                                 <label>Name</label>
-                                <input type="text" id="fname" name="fname" maxlength="25" class="form-control">
+                                <input type="text" id="username" name="username" maxlength="25" class="form-control" placeholder="Username"/>
+                                 <div class="name_error" id="val_error"></div>
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-6">
                                 <label>Email Address</label>
-                                <input type="email" id="email" name="email" maxlength="25" class="form-control">
+                                <input type="email" id="email" name="email" maxlength="25" class="form-control" placeholder="Emailadresse"/> 
+                                <div class="email_error" id="val_error"></div> 
                             </div>
+
                             <div class="clearfix"></div>
-                            <div class="form-group col-lg-12">
-                                <label>Message</label>
-                                <textarea class="form-control" id="message" name="message" maxlength="100" rows="6"></textarea>
+
+                            <div class="form-group col-lg-6">
+                                <label>password</label>
+                                <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password"/>
+                                <div class="password_error" id="val_error"></div>
+                              
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>confirme password</label>
+                                <input class="form-control" type="password" id="confirm_password" name="confirm_password" maxlength="20" placeholder="password"/>
+                                <div class="password_error" id="val_error"></div>
                             </div>
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="contact" class="btn btn-default">Submit</button>
+                                <button type="submit" id="contact" onclick="ValidateEmail(mail)"  value="submit" class="btn btn-default">Submit</button>
+                                
                             </div>
-                        </div>
+                        
                     </form>
-                </div>
+              </div>
             </div>
         </div>
 
     </div>
-    <!-- /.container -->
+
+
 
     <footer>
         <div class="container">
@@ -151,7 +145,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+<script src="js/form.js"></script>
 </body>
 
 </html>
