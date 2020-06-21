@@ -1,3 +1,19 @@
+<?php include 'cbd.php';?>
+   <?php ob_start(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +30,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <script src="https://kit.fontawesome.com/5e67adc73a.js" crossorigin="anonymous"></script>
     <!-- Custom CSS -->
     <link href="css/business-casual.css" rel="stylesheet">
 
@@ -29,7 +44,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<link rel="stylesheet" href="css/email.css" type="text/css" media="all">
 
 </head>
 
@@ -38,9 +52,9 @@
     <div class="brand">The Perfect Cup</div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
-    <!-- Navigation -->
     <?php include 'navbar.php';?>
-    <?php include 'form.php';?>
+        <!-- /.container -->
+    </nav>
 
     <div class="container">
 
@@ -82,56 +96,32 @@
                     </h2>
                     <hr>
                     <div id="add_err2"></div>
-              
-    <!-- /.container -->
-
-   
-   <form id="form" role="form" name="form" action="#" onsubmit="return check(this.element)"  method="POST">
-	<div>
-        <input name="create_email" type="text" id="create_email" size="45"/>
-        <input name="create_password" type="password" id="create_password"/>
-        <input name="create_confirm" type="password" id="create_confirm" />
-        <input name="create" type="submit" id="create" value="Créez votre compte"/>
-    </div>
-         
-                        <!-- <div class="row"> -->
-                            <div class="form-group col-lg-6">
+                    <form role="form">
+                        <div class="row">
+                            <div class="form-group col-lg-4">
                                 <label>Name</label>
-                                <input type="text" id="username" name="username" maxlength="25" class="form-control" placeholder="Username"/>
-                                 <div class="name_error" id="val_error"></div>
+                                <input type="text" id="fname" name="fname" maxlength="25" class="form-control">
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-4">
                                 <label>Email Address</label>
-                                <input type="email" id="email" name="email" maxlength="25" class="form-control" placeholder="Emailadresse"/> 
-                                <div class="email_error" id="val_error"></div> 
+                                <input type="email" id="email" name="email" maxlength="25" class="form-control">
                             </div>
-
                             <div class="clearfix"></div>
-
-                            <div class="form-group col-lg-6">
-                                <label>password</label>
-                                <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password"/>
-                                <div class="password_error" id="val_error"></div>
-                              
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label>confirme password</label>
-                                <input class="form-control" type="password" id="confirm_password" name="confirm_password" maxlength="20" placeholder="password"/>
-                                <div class="password_error" id="val_error"></div>
+                            <div class="form-group col-lg-12">
+                                <label>Message</label>
+                                <textarea class="form-control" id="message" name="message" maxlength="100" rows="6"></textarea>
                             </div>
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="contact" onclick="ValidateEmail(mail)"  value="submit" class="btn btn-default">Submit</button>
-                                
+                                <button type="submit" id="contact" class="btn btn-default">Submit</button>
                             </div>
-                        
+                        </div>
                     </form>
-              </div>
+                </div>
             </div>
         </div>
 
     </div>
-
-
+    <!-- /.container -->
 
     <footer>
         <div class="container">
@@ -145,7 +135,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-<script src="js/form.js"></script>
+
 </body>
 
 </html>

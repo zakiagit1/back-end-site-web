@@ -1,3 +1,21 @@
+<?php include 'cbd.php';?>
+<?php include 'navbar.php';?>
+<?php 'op_start()';?>
+
+<?php
+session_start();
+if(isset($_SESSION['id'])){
+   // $fname = $_SESSION['fname'];
+    //$lname = $_SESSION['lname'];
+    //$full_name = $fname . "" . $lname;
+  
+    
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +54,7 @@
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
     <!-- Navigation -->
-    <?php include 'navbar.php';?>
-
+    
 
     <div class="container">
 
@@ -161,4 +178,12 @@
 
 </body>
 
+
 </html>
+<?php
+}
+else{ 
+    header('location:login.php');
+
+}
+?>
