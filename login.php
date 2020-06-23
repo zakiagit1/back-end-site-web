@@ -145,7 +145,7 @@ if (isset($_POST['fname']) && isset($_POST['password'])) {
                             <div class="clearfix"></div>
 
                             <div class="form-group col-lg-6">
-                                <label for="password">password</label>
+                                <label for="password">passwordnnn</label>
                                 <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password" required >
                                 
                             </div>

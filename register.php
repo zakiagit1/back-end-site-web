@@ -6,23 +6,6 @@ session_start();?>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  <?php
 require('cbd.php');//la base de données
 // If the values are posted, insert them into the database.
@@ -137,7 +120,7 @@ if (isset($_POST['fname']) && isset($_POST['password'])){
     ?>
 
                     <form role="form" action="register.php"  method="post">
-                    <div class="alert alert-error"> <?= $_SESSION['message'] ?></div>
+                   
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label>Your Name</label>
@@ -156,10 +139,10 @@ if (isset($_POST['fname']) && isset($_POST['password'])){
                                 <input type="password" id="password" name="password" maxlength="25" class="form-control" required>
                             </div>
                            
-                            <div class="form-group col-lg-4">
+                           <!--- <div class="form-group col-lg-4">
                                 <label>confirm</label>
                                 <input type="password" id="confirm" name="confirm" maxlength="25" class="form-control" required>
-                            </div>
+                            </div>--->
                            
                             <div class="form-group col-lg-12">
                                 <button type="submit" name="submit" id="contact"  value="register" class="btn btn-default">Submit</button>
