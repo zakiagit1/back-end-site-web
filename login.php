@@ -128,13 +128,15 @@ header("Location:login.php");
                             
                             <div class="clearfix"></div>
 
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-6">
                                 <label for="password">password</label>
-                                <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password" required > 
+                                <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password" required >
+                                
                             </div>
                            
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="login"  name="login"  value="login" class="btn btn-default" required >login</button>  
+                                <button type="submit" id="login"  name="login"  value="connexion" class="btn btn-default" required >login</button>
+                                
                             </div>
                             <p>New User <a href="register.php">Register Here</a></p>
 
