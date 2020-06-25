@@ -6,10 +6,10 @@ session_start();?>
 
 <?php
  $_SESSION['id'] = null;
- $_SESSION['fname'] = null ;
- $_SESSION['lname']= null ;
+ $_SESSION['name'] = null ;
+ $_SESSION['email']= null ;
 
- header('location:index.php');
+ header('location:login.php');
 
  ?>
 

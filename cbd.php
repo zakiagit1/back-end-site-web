@@ -15,12 +15,12 @@ $con = mysqli_connect($host,$user,$pw,$db);
 
 if(isset($_POST["submit"])){
 	
-	$name = $_POST["fname"];
+	$fname = $_POST["fname"];
 	$email = $_POST["email"];
 	$password = $_POST["password"];
 	$confirm = $_POST["confirm"];	
 	 
-	$sql = "INSERT INTO user (name,email,password,confirm) VALUES ('$name','$email','$password','$confirm')";
+	$sql = "INSERT INTO `user` (name,email,password,confirm) VALUES ('$fname','$email','$password','$confirm')";
 	if (mysqli_query($con, $sql)) {
 		  echo "<h2><font color=blue> New record added to database.</font></h2>";
 	} else {

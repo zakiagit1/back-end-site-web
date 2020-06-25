@@ -1,57 +1,77 @@
-<?php include 'cbd.php'?>
+
  <?php ob_start(); ?>
  
 <?php
 session_start();?>
 
+<?php include 'cbd.php';?>
+<?php
+//session_start();
+$username = "";
+$email = "";
+$errors = [];
+
+$con = new mysqli('localhost', 'root', '', 'the_perfect_cup1');
+//$con = mysqli_connect($host,$user,$pw,$db);
+// SIGN UP USER
+if (isset($_POST['submit'])) {
+    //if (empty($_POST['username'])) {
+       // $errors['username'] = 'username required';
+    //}
+    //if (empty($_POST['email'])) {
+       // $errors['email'] = 'Email required';
+   // }
+    //if (empty($_POST['password'])) {
+       // $errors['password'] = 'Password required';
+   //// }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <?php
-require('cbd.php');//la base de données
-// If the values are posted, insert them into the database.
-if (isset($_POST['fname']) && isset($_POST['password'])){
-    $fname = $_POST['fname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm = $_POST['confirm'];
-    $slquery = "SELECT 1 FROM user WHERE email = '$email'";
-    $selectresult = mysql_query($slquery);
-    if(mysql_num_rows($selectresult)>0)
-    {
-        die('email already exists');
-    } elseif($password != $cpassword){// aucun reaction 
-        $msg = "passwords doesn't match";
-   }
-
-    $query = "INSERT INTO `user` (name,email, password,confirm, ) VALUES ('$fname','$email', '$password', '$confirm' )";
-    $result = mysql_query($query);
-    if($result){
-        $msg = "User Created Successfully.";
+   
+    if (isset($_POST['password']) && $_POST['password'] !== $_POST['confirm']) {
+        $errors['confirm'] = 'The two passwords do not match';
     }
-   }
+
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $token = bin2hex(random_bytes(500)); // generate unique token
+    //$password = password_hash($_POST['password'], PASSWORD_DEFAULT); //encrypt password
+
+    // Check if email already exists
+    $sql = "SELECT * FROM user WHERE email='$email' LIMIT 1";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $errors['email'] = "Email already exists";
+       // alert('Email already exists');
+    }
+
+    if (count($errors) === 0) {
+        $query = "INSERT INTO user SET username=?, email=?, token=?, password=?";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param('ssss', $username, $email, $token, $password);
+        $result = $stmt->execute();
+
+        if ($result) {
+            $id = $stmt->insert_id;
+            $stmt->close();
+
+            //TO DO: send verification email to user
+            //sendVerificationEmail($email, $token);
+
+            $_SESSION['id'] = $id;///
+            $_SESSION['username'] = $username;
+            $_SESSION['email'] = $email;
+            $_SESSION['verified'] = false;
+            $_SESSION['message'] = 'You are logged in!';
+            $_SESSION['type'] = 'alert-success';
+            header('location: index.php');
+        } else {
+            $_SESSION['error_msg'] = "Database error: Could not register user";
+        }
+    }
+}
+
 ?>
-
-
-
-
-
 
 
 
@@ -124,59 +144,63 @@ if (isset($_POST['fname']) && isset($_POST['password'])){
                     <div id="add_err2"></div>
 
 
-                    <?php
-        if(isset($msg) & !empty($msg)){
-        echo $msg;
-    }
-    ?>
-    <?php
-    if(isset($errormes))
-    {
-        echo $errormes;
-    }
-    ?>
+    
 
-                    <form role="form" action="register.php"  method="post">
-                    <div class="alert alert-error"> <?= $_SESSION['message'] ?></div>
+<div class="container">
+<p><span class="error">* required field</span></p>
+   <form role="form" action="register.php" method="post">
+    
+                   
+                   
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label>Your Name</label>
-                                <input type="text" id="fname" name="fname" maxlength="25" class="form-control" required>
+                                <input type="text" id="username" name="username" maxlength="25" class="form-control" value="<?php echo $username; ?>" required>
+                                
                             </div>
                             
                             <div class="form-group col-lg-4">
                                 <label>Email Address</label>
                                 <input type="email" id="email" name="email" maxlength="25" class="form-control" required>
+                               
                             </div>
 
                              <div class="clearfix"></div>
                              
                             <div class="form-group col-lg-4">
                                 <label>password</label>
-                                <input type="password" id="password" name="password" maxlength="25" class="form-control" required>
+                                <input type="password" id="password" name="password" maxlength="25" class="form-control"  required>
+                               
                             </div>
                            
-                            <div class="form-group col-lg-4">
+                           <div class="form-group col-lg-4">
                                 <label>confirm</label>
-                                <input type="password" id="confirm" name="confirm" maxlength="25" class="form-control" required>
+                                <input type="password" id="confirm" name="confirm" maxlength="25" class="form-control"  required>
+                            
                             </div>
                            
                             <div class="form-group col-lg-12">
-                                <button type="submit" name="submit" id="contact"  value="register" class="btn btn-default">Submit</button>
+                                <button type="submit" name="submit" id="contact"  value="submit" class="btn btn-default">Submit</button>
                             </div>
                         </div> 
                        
                     </form>
                     <div class="form-group col-lg-12">
-                    <p>Already have an account? <a href="login.php">Login here</a>.</p>
-                        <a href = "register.php" id="register" class="btn btn-default"> Not a member ? register here </a>
+                   
+                    <p>Already have an account? <a href="login.php">Login here</a></p>
+                        <a href = "register.php" id="register"  class="btn btn-default"> Not a member ? register here </a>
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
-    <!-- /.container -->
+</div>    <!-- /.container -->
+
+
+
+
+
 
     <footer>
         <div class="container">
@@ -193,4 +217,4 @@ if (isset($_POST['fname']) && isset($_POST['password'])){
 
 </body>
 
-</html>
+</html

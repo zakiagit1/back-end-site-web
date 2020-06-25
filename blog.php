@@ -2,11 +2,12 @@
 <?php include 'navbar.php';?>
 <?php 'op_start()';?>
 
+<?php session_start(); ?>
 <?php
-session_start();
-if(isset($_SESSION['id'])){
-   // $fname = $_SESSION['fname'];
-    //$lname = $_SESSION['lname'];
+
+ if(isset($_SESSION['name'])){//login 
+    //$username = $_SESSION['username'];
+    //$password = $_SESSION['password'];
     //$full_name = $fname . "" . $lname;
   
     
@@ -64,6 +65,10 @@ if(isset($_SESSION['id'])){
                     <hr>
                     <h2 class="intro-text text-center">The Perfect Cup
                         <strong>blog</strong>
+
+                        Welcome <?php echo $_SESSION["name"]; ?>. Click here to <a href="logout.php" tite="Logout">Logout.
+
+
                     </h2>
                     <hr>
                 </div>
@@ -183,7 +188,7 @@ if(isset($_SESSION['id'])){
 <?php
 }
 else{ 
-    header('location:login.php');
-
+    header('location:login.php');//blog
+    //echo "<h1>Please login first .</h1>";
 }
 ?>

@@ -96,7 +96,21 @@
                     </h2>
                     <hr>
                     <div id="add_err2"></div>
-                    <form role="form">
+
+                    <form method="post" action="process.php">
+To:<br>
+  <input type="email" name="email"><br>
+ Subject:<br>
+  <input type="text" name="subject"><br><br>
+ <textarea rows="4" cols="40" name="message">
+</textarea> 
+ <input type="submit" name="btn_send">
+               
+           </form>
+
+
+
+                    <!---<form role="form">
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label>Name</label>
@@ -115,7 +129,7 @@
                                 <button type="submit" id="contact" class="btn btn-default">Submit</button>
                             </div>
                         </div>
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </div>

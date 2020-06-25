@@ -1,43 +1,40 @@
-   <?php include 'navbar.php';?>
-   <?php include 'cbd.php';?>
+<?php include 'navbar.php';?>
+  
    <?php ob_start(); ?>
-  
+
+   <?php include 'cbd.php';?>
+
+
 <?php
-session_start();?>
-  
-<?php
-// On définit un login et un mot de passe de base pour tester notre exemple. Cependant, vous pouvez très bien interroger votre base de données afin de savoir si le visiteur qui se connecte est bien membre de votre site
-$name_valide = "fname";
-$password_valide = "password";
 
-// on teste si nos variables sont définies
-if (isset($_POST['fname']) && isset($_POST['password'])) {
-
-	// on vérifie les informations du formulaire, à savoir si le pseudo saisi est bien un pseudo autorisé, de même pour le mot de passe
-	if ($name_valide == $_POST['fname'] && $password_valide == $_POST['password']) {
-		// dans ce cas, tout est ok, on peut démarrer notre session
-
-		// on la démarre :)
-		session_start ();
-		// on enregistre les paramètres de notre visiteur comme variables de session ($login et $pwd) (notez bien que l'on utilise pas le $ pour enregistrer ces variables)
-		$_SESSION['fname'] = $_POST['fname'];
-		$_SESSION['password'] = $_POST['password'];
-
-		// on redirige notre visiteur vers une page de notre section membre
-		header ('location:blog.php');
-	}
-	else {
-		// Le visiteur n'a pas été reconnu comme étant membre de notre site. On utilise alors un petit javascript lui signalant ce fait
-		echo '<body onLoad="alert(\'Membre non reconnu...\')">';
-		// puis on le redirige vers la page d'accueil
-		echo '<meta http-equiv="refresh" content="0;URL=register.php">';
-	}
-
-//else {
-	//echo 'Les variables du formulaire ne sont pas déclarées.';
-//}
+session_start();
+$message="";
+if(count($_POST)>0) {
+$con = mysqli_connect($host,$user,$pw,$db);
+$result = mysqli_query($con,"SELECT * FROM user WHERE username='" . $_POST["username"] . "' and password = '". $_POST["password"]."'");
+$row  = mysqli_fetch_array($result);
+if(is_array($row)) {
+$_SESSION["id"] = $row['id'];
+$_SESSION["name"] = $row['name'];
+} else {
+$message = "Invalid Username or Password!";
+}
+}
+if(isset($_SESSION["id"])) {
+header("Location:login.php");
 }
 ?>
+
+
+
+
+
+
+
+
+
+    
+
 
 
 
@@ -98,10 +95,7 @@ if (isset($_POST['fname']) && isset($_POST['password'])) {
                     </h2>
                     <hr>
                 </div>
-                <div class="col-md-8">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.4557903780455!2d-118.33880764857918!3d34.08346238050228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2b8d3b1e0287d%3A0x9cc32be17df028b8!2sMelrose+Ave%2C+Beverly+Hills%2C+CA+90210%2C+USA!5e0!3m2!1sen!2sca!4v1458950947899"
-                        width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
+                
                 <div class="col-md-4">
                     <p>Phone:
                         <strong>123.456.7890</strong>
@@ -131,30 +125,29 @@ if (isset($_POST['fname']) && isset($_POST['password'])) {
     <!-- /.container -->
    
     <div class="page-header">
-      </b>. Welcome to our site.</h1>
+   
     </div>
-     <form id="form" role="form"   name="form" action="login.php"   method="POST">
+     <form id="form" role="form"   name="form"  action="login.php"   method="POST">
     
-    
+     
                         <!-- <div class="row"> -->
                         <div class="form-group col-lg-4">
-                                <label>First Name</label>
-                                <input type="text" id="fname" name="fname" maxlength="25" class="form-control" placeholder="yourName" required>
+                                <label>Your User Name</label>
+                                <input type="text" id="username" name="username" maxlength="25" class="form-control" placeholder="yourName"  required>
                             </div>
                             
                             <div class="clearfix"></div>
 
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-4">
                                 <label for="password">password</label>
-                                <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password" required >
-                                
+                                <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password" required > 
                             </div>
                            
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="login"  name="login"  value="connexion" class="btn btn-default" required >logint</button>
-                                
+                                <button type="submit" id="login"  name="login"  value="login" class="btn btn-default" required >login</button>  
                             </div>
-                            
+                            <p>New User <a href="register.php">Register Here</a></p>
+
     
                     </form>
               </div>
@@ -182,3 +175,12 @@ if (isset($_POST['fname']) && isset($_POST['password'])) {
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
