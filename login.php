@@ -145,13 +145,13 @@ if (isset($_POST['fname']) && isset($_POST['password'])) {
                             <div class="clearfix"></div>
 
                             <div class="form-group col-lg-6">
-                                <label for="password">passwordnnn</label>
+                                <label for="password">password</label>
                                 <input type="password" class="form-control" id="password" name="password" maxlength="20" placeholder="password" required >
                                 
                             </div>
                            
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="login"  name="login"  value="connexion" class="btn btn-default" required >logint</button>
+                                <button type="submit" id="login"  name="login"  value="connexion" class="btn btn-default" required >login</button>
                                 
                             </div>
                             
