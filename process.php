@@ -22,8 +22,8 @@
     $mail->AddAddress($email);
     $mail->Username   ="zakia.antary@gmail.com";//"divyasundarsahu@gmail.com";  
     $mail->Password   ="062456880z";//"gmail-password";            
-    $mail->SetFrom("zakia.antary@gmail.com","zakia antary");//('divyasundarsahu@gmail.com','Divyasundar Sahu');
-    $mail->AddReplyTo("abdessamiaa.antary@gmail.com","abdo antary");//("divyasundarsahu@gmail.com","Divyasundar Sahu");
+    $mail->SetFrom("abdessamiaa.antary@gmail.com","abdo antary");//('divyasundarsahu@gmail.com','Divyasundar Sahu');
+    $mail->AddReplyTo("zakia.antary@gmail.com","zakia antary");//("divyasundarsahu@gmail.com","Divyasundar Sahu");
     $mail->Subject    = $subject;
     $mail->Body    = $message;
     $mail->AltBody    = $message;

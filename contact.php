@@ -98,7 +98,7 @@
                     <div id="add_err2"></div>
 
                     <form method="post" action="process.php">
-To:<br>
+<!--To:<br>
   <input type="email" name="email"><br>
  Subject:<br>
   <input type="text" name="subject"><br><br>
@@ -106,30 +106,33 @@ To:<br>
 </textarea> 
  <input type="submit" name="btn_send">
                
-           </form>
+           </form>-->
 
 
 
-                    <!---<form role="form">
+                  <form role="form">
                         <div class="row">
+                            
                             <div class="form-group col-lg-4">
-                                <label>Name</label>
-                                <input type="text" id="fname" name="fname" maxlength="25" class="form-control">
+                               To:<br> <label></label>
+                                <input type="email" id="email" name="email" maxlength="50" class="form-control"><br>
                             </div>
+
                             <div class="form-group col-lg-4">
-                                <label>Email Address</label>
-                                <input type="email" id="email" name="email" maxlength="25" class="form-control">
+                                 Subject:<br><label></label>
+                                <input type="text" id="fname" name="subject" maxlength="25" class="form-control"><br>
                             </div>
+
                             <div class="clearfix"></div>
                             <div class="form-group col-lg-12">
                                 <label>Message</label>
-                                <textarea class="form-control" id="message" name="message" maxlength="100" rows="6"></textarea>
+                                <textarea class="form-control" id="message" cols="40" name="message" maxlength="100" rows="6"></textarea>
                             </div>
                             <div class="form-group col-lg-12">
-                                <button type="submit" id="contact" class="btn btn-default">Submit</button>
+                                <button type="submit" id="contact"  name="btn_send"  class="btn btn-default">Submit</button>
                             </div>
                         </div>
-                    </form>-->
+                    </form>
                 </div>
             </div>
         </div>

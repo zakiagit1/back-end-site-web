@@ -188,7 +188,7 @@
 <?php
 }
 else{ 
-    header('location:login.php');//blog
+    header('location :login.php');
     //echo "<h1>Please login first .</h1>";
 }
 ?>

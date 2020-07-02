@@ -6,7 +6,7 @@
 
 
 <?php
-
+//include 'cbd.php';
 session_start();
 $message="";
 if(count($_POST)>0) {
@@ -15,14 +15,14 @@ $result = mysqli_query($con,"SELECT * FROM user WHERE username='" . $_POST["user
 $row  = mysqli_fetch_array($result);
 if(is_array($row)) {
 $_SESSION["id"] = $row['id'];
-$_SESSION["name"] = $row['name'];
+$_SESSION["username"] = $row['username'];
 } else {
 $message = "Invalid Username or Password!";
 }
 }
-if(isset($_SESSION["id"])) {
-header("Location:login.php");
-}
+//if(isset($_SESSION["id"])) {
+header("Location: blog.php");
+//}
 ?>
 
 
@@ -167,6 +167,7 @@ header("Location:login.php");
 </body>
 
 </html>
+
 
 
 
