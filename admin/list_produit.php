@@ -109,21 +109,21 @@ if(mysqli_num_rows($query_run) > 0){
        ?>
 
        <tr>
-       <td><?php echo $row['id']; ?></td>
+       <td><?php echo $row['id_coffe']; ?></td>
        <td><?php echo $row['pdt_title']; ?></td>
        <!--<td></td>-->
-       <td><?php echo '<img src="upload/'.$row['pdt_image'].'" width="100px;" height="100px;" alt="Image">'?></td>
+       <td><?php echo '<img class="img-responsive" src="upload/'.$row['pdt_image'].' " width="100px;" height="100px;" alt="Image">'?></td>
        <td><?php echo $row['pdt_description']; ?></td>
        <td><?php echo $row['pdt_prix']; ?></td>
          <td>
          <form action="edit_produit.php" method="POST">
-           <input type="hidden" name="edit_id" value="<?php echo $row['id'];?>">
+           <input type="hidden" name="edit_id" value="<?php echo $row['id_coffe'];?>">
            <button type="submit" name="edit_data_btn"  class="btn btn-success">EDIT</button>
          </form> 
          </td>
          <td> 
-         <form action="edit_produit.php" method="POST">
-           <input type="hidden" name="delete_id" value="<?php echo $row['id'];?>">
+         <form action="admin_code.php" method="POST">
+           <input type="hidden" name="delete_id" value="<?php echo $row['id_coffe'];?>">
            <button type="submit" name="delete_pdt_btn"  class="btn btn-success">DELETE</button>
          </form> 
         </td>

@@ -2,28 +2,49 @@
   
    <?php ob_start(); ?>
 
-   <?php include 'cbd.php';?>
-
+  
 
 <?php
-//include 'cbd.php';
-session_start();
-$message="";
-if(count($_POST)>0) {
-$con = mysqli_connect($host,$user,$pw,$db);
-$result = mysqli_query($con,"SELECT * FROM user WHERE username='" . $_POST["username"] . "' and password = '". $_POST["password"]."'");
-$row  = mysqli_fetch_array($result);
-if(is_array($row)) {
-$_SESSION["id"] = $row['id'];
-$_SESSION["username"] = $row['username'];
-} else {
-$message = "Invalid Username or Password!";
+include "cbd.php";
+session_start();   
+if(isset($_POST['login'])){
+    
+
+
+    $username = mysqli_real_escape_string($con,$_POST['username']);
+    $password = mysqli_real_escape_string($con,$_POST['password']);
+
+    if ($username != "" && $password != ""){
+
+        $sql_query = "select count(*) as cntUser from user where username='".$username."' and password='".$password."'";
+        $result = mysqli_query($con,$sql_query);
+        $row = mysqli_fetch_array($result);
+
+        $count = $row['cntUser'];
+
+        if($count > 0){
+            $_SESSION['username'] = $username;
+            header("Location: blog.php");
+        }else{
+            echo "Invalid username and password";
+        }
+
+    }
+
 }
-}
-//if(isset($_SESSION["id"])) {
-header("Location: blog.php");
-//}
+
+
+
 ?>
+
+
+
+
+
+
+
+
+
 
 
 

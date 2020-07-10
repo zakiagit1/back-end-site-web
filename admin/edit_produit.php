@@ -15,9 +15,9 @@
     <?php
        $con = mysqli_connect("localhost","root","","the_perfect_cup1");
         if(isset($_POST['edit_data_btn'])){
-          $id = $_POST['edit_id'];
+          $id_coffe = $_POST['edit_id'];
           //echo $id;
-         $query = "SELECT * FROM produits WHERE id='$id'";
+         $query = "SELECT * FROM produits WHERE id_coffe='$id_coffe'";
          $query_run = mysqli_query($con,$query);
         foreach($query_run as $row) {
     ?>
@@ -26,7 +26,7 @@
 
     <form action="admin_code.php" method="POST" enctype="multipart/from-data" > 
      
-       <input type="hidden" name="edit_id" value="<?php echo $row['id']?>" >
+       <input type="hidden" name="edit_id" value="<?php echo $row['id_coffe']?>" >
         <div class="form-group">
             <label>Title prodact</label>
             <input type="text"  name="edit_pdt" value="<?php echo $row['pdt_title']?>"  maxlength="25" 
@@ -47,7 +47,7 @@
 
         <div class="form-group">
             <label>Prix product</label>
-            <input type="text" id="text" name="edit_prix" value="<?php echo $row['pdt_prix']?>"
+            <input type="text" id="edit_prix" name="edit_prix" value="<?php echo $row['pdt_prix']?>"
              maxlength="25" class="form-control" placeholder="Prix" required>  
         </div>
 

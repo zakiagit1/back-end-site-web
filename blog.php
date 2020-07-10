@@ -1,14 +1,15 @@
-<?php include 'cbd.php';?>
-<?php include 'navbar.php';?>
-<?php 'op_start()';?>
+<?php include 'cbd.php';
+include 'navbar.php';
+'op_start()';
 
-<?php session_start(); ?>
-<?php
+ session_start(); 
 
- if(isset($_SESSION['name'])){//login 
+
+ if(isset($_SESSION['username'])){//login 
     //$username = $_SESSION['username'];
     //$password = $_SESSION['password'];
     //$full_name = $fname . "" . $lname;
+   //header("location: blog.php");
   
     
 
@@ -66,12 +67,86 @@
                     <h2 class="intro-text text-center">The Perfect Cup
                         <strong>blog</strong>
 
-                        Welcome <?php echo $_SESSION["name"]; ?>. Click here to <a href="logout.php" tite="Logout">Logout.
+                        Welcome <?php echo $_SESSION["username"]; ?>. Click here to <a href="logout.php" tite="Logout">Logout.
 
 
                     </h2>
                     <hr>
                 </div>
+
+
+
+
+
+                <?php 
+                            $query = "SELECT * FROM produits";
+                            $load_produits_query = mysqli_query($con,$query);
+
+                            if (!$load_produits_query) {
+                                die("QUERY FAILED". mysqli_error($con));
+                            }
+
+                            while ($row = mysqli_fetch_array($load_produits_query)) {
+                                $id_coffe = $row['id_coffe'];
+                                $pdt_title = $row['pdt_title'];
+                                $pdt_image = $row['pdt_image'];
+                                $pdt_description = $row['pdt_description'];//
+                                $pdt_prix = $row['pdt_prix'];
+                              //  $date_prod = $row['date_prod'];
+
+                                ?>
+                        
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-border img-full" src="img/<?php echo $pdt_image ?>" alt="<?php echo $pdt_image ?>">
+                    <h2><?php echo  $pdt_title ?>
+                        <br>
+                        
+                    </h2>
+                    <p><?php echo $pdt_description ?>.</p>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $id_coffe ?>">Read More</button>
+                    <a href = "admin/panier.php?articl=<?php echo $id_coffe ?>" class="btn btn-success btn-lg" data-dismiss="modal">Add To Cart</a>
+                     <hr>
+                </div>
+                 <!--Modal-1-->
+	<div id="myModal<?php echo $id ?>" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+            <!--Modal Content-->
+            <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss-="modal">&times;</button>
+				<h4 class="modal-title"><?php echo  $pdt_title ?></h4>
+			</div>
+			<div class="modal-body">
+				<p><?php echo $pdt_prix ?></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            
+            </div>
+		</div>
+	</div>
+                        <?php
+                            }
+                        ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="col-lg-12 text-center">
                     <img class="img-responsive img-border img-full" src="img/slide-1.jpg" alt="">
                     <h2>COCONUT OIL COFFEE
@@ -188,7 +263,7 @@
 <?php
 }
 else{ 
-    header('location :login.php');
+    header("location: login.php");
     //echo "<h1>Please login first .</h1>";
 }
 ?>

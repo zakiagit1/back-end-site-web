@@ -41,8 +41,9 @@
                         <a href="register.php">register</a>
                     </li>
                     <li>
-                        <a href="logout.php">logout</a>
+                    <a href="admin/admin_register.php">Admin</a>
                     </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

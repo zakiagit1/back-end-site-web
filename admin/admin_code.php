@@ -12,7 +12,7 @@ $con = mysqli_connect("localhost","root","","the_perfect_cup1");
 if (isset($_POST['save_produit'])){
 
     $pdt_title = $_POST["pdt_title"]; 
-    $pdt_image = $_FILES["pdt_image"]['name'];  
+    $pdt_image = $_FILES["pdt_image"]["name"];  
     $pdt_description = $_POST["pdt_description"]; 
     $pdt_prix = $_POST["pdt_prix"];
 
@@ -54,19 +54,22 @@ if (isset($_POST['save_produit'])){
 
 if(isset($_POST['pdt_update_btn'])) {
 
-    $edit_id = $_POST['edit_id'];
-    $edit_pdt = $_POST['edit_pdt'];
-    $edit_pdt_image = $_FILES["pdt_image"]['name'];
-    $edit_descrip = $_POST['edit_descrip'];
-    $edit_prix = $_POST['edit_prix'];
+    $edit_id = $_POST["edit_id"];
+    $edit_pdt = $_POST["edit_pdt"];
+    $pdt_image = $_FILES["pdt_image"]["name"];
+    $edit_descrip = $_POST["edit_descrip"];
+    $edit_prix = $_POST["edit_prix"];
+   /// $image_prod_tmp = $_FILES['image']['tmp_name'];///////////
 
-    $query= "UPDATE produits SET pdt_title='$edit_pdt', pdt_image='$edit_pdt_image' , pdt_description='$edit_descrip' , 
-                   pdt_prix='$edit_prix' WHERE id='$edit_id'";
+    $query= "UPDATE produits SET pdt_title='$edit_pdt', pdt_image='$pdt_image' , pdt_description='$edit_descrip' , 
+                   pdt_prix='$edit_prix' WHERE id_coffe = '$edit_id'";
     $query_run = mysqli_query($con, $query);
 
     if($query_run){
+        //move_uploaded_file($image_prod_temp, "../img/$image_prod");
+        
 
-        move_uploaded_file($_FILES["pdt_image"]["tmp_name"],"upload/".$_FILES["pdt_image"]["name"]);
+        move_uploaded_file($_FILES["pdt_image"]["tmp_name"], "upload/".$_FILES["pdt_image"]["name"]);
         //echo "Saved";
         $_SESSION['success'] = "product Updated";
         header('location: list_produit.php');
@@ -87,16 +90,16 @@ else{
 
 if(isset($_POST['delete_pdt_btn']))
 {
-$id = $_POST['delete_id'];
+$id_coffe = $_POST['delete_id'];
 
-$check_query= "SELECT * FROM produits WHERE id='$id' ";
+$check_query= "SELECT * FROM produits WHERE id_coffe='$id_coffe' ";
 $check_query_run = mysqli_query($con, $check_query);
 foreach ($check_query_run  as $rows) 
 {
   
 if($img_path = "upload/".$row['images'])
 {
-    $query= "DELETE FROM produits WHERE id='$id' ";
+    $query= "DELETE FROM produits WHERE id_coffe='$id' ";
     $query_run = mysqli_query($con, $query);
 
   if($query_run)
@@ -168,9 +171,11 @@ else{
 }
 
 }
+?>
+
+<?php
 
 ///update btn
-
 
 if(isset($_POST["update_btn"]))
 {
@@ -194,10 +199,11 @@ else{
 }
 
 
+?>
 
 
+<?php
 ///delete btn
-
 
 if(isset($_POST['delete_btn']))
 {
@@ -220,7 +226,5 @@ else{
 
 
 
-
-
-
 ?>
+

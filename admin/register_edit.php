@@ -26,6 +26,7 @@ $con = mysqli_connect("localhost","root","","the_perfect_cup1");
     foreach($query_run as $row) {
      ?>
 
+
    <form action="admin_register.php" method="POST"> 
      <div class="modal-bady">
        <input type="hidden" name="edit_id" value="<?php echo $row['id'] ?>" >
