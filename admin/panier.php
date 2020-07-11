@@ -113,9 +113,9 @@
                                 echo "<td>$articl_price</td>";
                                 echo "<td>$articl_quantity</td>";
                                 echo "<td>$total</td>";
-                                echo "<td><a href='cart.php?add=$articl_id&user=$id_client'>Add</a></td>";
-                                echo "<td><a href='cart.php?reduce=$articl_id&user=$id_client'>Reduce</a></td>";
-                                echo "<td><a href='cart.php?remove=$articl_id&user=$id_client'>Remove</a></td>";
+                                echo "<td><a href='panier.php?add=$articl_id&user=$id_client'>Add</a></td>";
+                                echo "<td><a href='panier.php?reduce=$articl_id&user=$id_client'>Reduce</a></td>";
+                                echo "<td><a href='panier.php?remove=$articl_id&user=$id_client'>Remove</a></td>";
                                 echo "</tr>";
 
                             }

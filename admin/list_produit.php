@@ -112,7 +112,7 @@ if(mysqli_num_rows($query_run) > 0){
        <td><?php echo $row['id_coffe']; ?></td>
        <td><?php echo $row['pdt_title']; ?></td>
        <!--<td></td>-->
-       <td><?php echo '<img class="img-responsive" src="upload/'.$row['pdt_image'].' " width="100px;" height="100px;" alt="Image">'?></td>
+       <td><?php echo '<img class="img-responsive" src="./upload/'.$row['pdt_image'].' " width="100px;" height="100px;" alt="Image">'?></td>
        <td><?php echo $row['pdt_description']; ?></td>
        <td><?php echo $row['pdt_prix']; ?></td>
          <td>

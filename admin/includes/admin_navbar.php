@@ -39,6 +39,7 @@
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="buttons.html">Buttons</a>
             <a class="collapse-item" href="list_produit.php">listes  Produits</a>
+            <a class="collapse-item" href="panier.php">Carte</a>
           </div>
         </div>
       </li>

@@ -35,7 +35,7 @@ if (isset($_POST['save_produit'])){
         move_uploaded_file($_FILES["pdt_image"]["tmp_name"], "upload/".$_FILES["pdt_image"]["name"]);
          //echo "Saved";
          $_SESSION['success'] = "new product Added";
-         header('location: list_produit.php');
+         header('location: list_produit.php');   
 
       }
       else{

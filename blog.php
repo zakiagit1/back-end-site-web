@@ -103,7 +103,7 @@ include 'navbar.php';
                         
                     </h2>
                     <p><?php echo $pdt_description ?>.</p>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $id_coffe ?>">Read More</button>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $id_client ?>">Read More</button>
                     <a href = "admin/panier.php?articl=<?php echo $id_coffe ?>" class="btn btn-success btn-lg" data-dismiss="modal">Add To Cart</a>
                      <hr>
                 </div>
